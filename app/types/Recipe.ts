@@ -9,4 +9,8 @@ export interface Recipe {
   excerpt?: string;
   mainImage?: ImageAsset;
   body: PortableTextBlock[];
+  categories?: string[];
+  cookingTime?: string;
+  ingredients?: PortableTextBlock[];
+  instructions?: string[];
 }

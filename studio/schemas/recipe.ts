@@ -27,6 +27,12 @@ export default defineType({
       rows: 4,
     }),
     defineField({
+      title: 'Categories',
+      name: 'categories',
+      type: 'array',
+      of: [{type: 'string'}],
+    }),
+    defineField({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
@@ -35,9 +41,20 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
+      name: 'ingredients',
+      title: 'Ingredients',
       type: 'blockContent',
+    }),
+    defineField({
+      title: 'Instuctions',
+      name: 'instructions',
+      type: 'array',
+      of: [{type: 'string'}],
+    }),
+    defineField({
+      name: 'cookingtime',
+      title: 'Cooking time',
+      type: 'string',
     }),
   ],
   preview: {
