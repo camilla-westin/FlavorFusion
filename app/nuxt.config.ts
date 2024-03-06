@@ -21,10 +21,13 @@ export default defineNuxtConfig({
     useCdn: true, // `false` if you want to ensure fresh data
     apiVersion: "2021-03-25",
   },
+  css: ["~/assets/main.css"],
   postcss: {
     plugins: {
+      "postcss-import": {},
+      "tailwindcss/nesting": {},
+      tailwindcss: {},
       autoprefixer: {},
-      "postcss-nested": {},
     },
   },
 });
