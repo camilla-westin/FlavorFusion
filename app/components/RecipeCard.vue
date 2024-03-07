@@ -10,37 +10,37 @@ defineProps({
 </script>
 
 <template>
-  <div v-if="recipe" class="recipe-card border rounded mt-4">
-    <img
-      v-if="recipe.mainImage"
-      class="cover"
-      :src="$urlFor(recipe.mainImage).width(500).height(300).url()"
-      alt="Cover image"
-    />
-
-    <div v-else class="card__cover--none" />
-
+  <div
+    v-if="recipe"
+    class="recipe-card border rounded mt-4 flex justify-between flex-col"
+  >
     <div class="card__container">
-      <h3 class="text-xl mt-2 mb-2">
+      <img
+        v-if="recipe.mainImage"
+        class="cover"
+        :src="$urlFor(recipe.mainImage).width(500).height(300).url()"
+        alt="Cover image"
+      />
+
+      <div v-else class="card__cover--none" />
+      <h3 class="text-lg mt-2 mb-2 p-4">
         <a class="card__link" :href="`/post/${recipe.slug.current}`">
           {{ recipe.title }}
         </a>
       </h3>
-      <p class="text-sm">{{ recipe.excerpt }}</p>
+    </div>
+    <div class="p-2">
+      <div class="bg-mint 00 rounded p-2 flex justify-center">
+        <div class="flex">
+          <span class="i-mdi-clock-time-five-outline relative mr-1"></span>
+          <span class="leading-none text-sm">{{ recipe.cookingtime }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.recipe-card {
-  display: flex;
-  flex-direction: column;
-  padding: var(--space-2);
-  padding: 9px;
-  position: relative;
-  border-bottom: 1px solid #ced2d9;
-}
-
 .card__cover {
   height: 231px;
   width: 100%;

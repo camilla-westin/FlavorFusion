@@ -1,11 +1,7 @@
 <template>
   <div class="container">
     <header class="header">
-      <a
-        class="header__title"
-        href="/"
-        >Nuxt + Sanity</a
-      >
+      <a class="header__title" href="/">Nuxt + Sanity</a>
     </header>
     <main>
       <NuxtPage />
@@ -37,6 +33,7 @@
 <style>
 .container {
   margin: 0 auto;
+  max-width: 1280px;
 }
 
 main {
@@ -82,7 +79,6 @@ main {
 
 @media (min-width: 575px) {
   .container {
-    max-width: var(--max-width-1);
     padding: 0 var(--space-4);
   }
 

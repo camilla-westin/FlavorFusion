@@ -14,7 +14,7 @@ const { data: recipes } = await useSanityQuery<Recipe[]>(recipeQuery);
     <Card v-if="posts" v-for="post in posts" :key="post._id" :post="post" />
     <Welcome v-if="posts?.length === 0" />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
       <RecipeCard
         v-if="recipes"
         v-for="recipe in recipes"
