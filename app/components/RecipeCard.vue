@@ -24,7 +24,7 @@ defineProps({
 
       <div v-else class="card__cover--none" />
       <h3 class="text-lg mt-2 mb-2 p-4">
-        <a class="card__link" :href="`/post/${recipe.slug.current}`">
+        <a class="card__link" :href="`/recipe/${recipe.slug.current}`">
           {{ recipe.title }}
         </a>
       </h3>
@@ -35,6 +35,7 @@ defineProps({
           <span class="i-mdi-clock-time-five-outline relative mr-1"></span>
           <span class="leading-none text-sm">{{ recipe.cookingtime }}</span>
         </div>
+        <div class="text-sm ml-1 leading-none">| {{ recipe.complexity }}</div>
       </div>
     </div>
   </div>

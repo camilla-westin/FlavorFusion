@@ -56,6 +56,11 @@ export default defineType({
       title: 'Cooking time',
       type: 'string',
     }),
+    defineField({
+      name: 'complexity',
+      title: 'Complexity',
+      type: 'string',
+    }),
   ],
   preview: {
     select: {

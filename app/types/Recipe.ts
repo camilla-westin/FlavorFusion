@@ -13,4 +13,5 @@ export interface Recipe {
   cookingTime?: string;
   ingredients?: PortableTextBlock[];
   instructions?: string[];
+  complexity?: "enkel" | "medel" | "avancerad";
 }
