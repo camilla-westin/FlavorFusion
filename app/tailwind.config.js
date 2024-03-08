@@ -19,6 +19,10 @@ module.exports = {
       backgroundColor: {
         mint: "#F5FAF4",
       },
+      fontFamily: {
+        primary: ["PT Serif", "serif"],
+        headings: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [
