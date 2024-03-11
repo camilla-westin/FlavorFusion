@@ -26,24 +26,26 @@ const toggleCheck = (index: number) => {
   <section>
     <img
       v-if="recipe.mainImage"
-      class="cover w-2/3 h-96 object-cover"
+      class="cover w-full lg:w-2/3 h-96 object-cover"
       :src="$urlFor(recipe.mainImage).width(1920).url()"
       alt="Cover image"
     />
-    <div>
-      <h1 class="font-bold text-7xl font-headings my-6">{{ recipe.title }}</h1>
-      <p class="text-xl w-3/4 mb-4">{{ recipe.excerpt }}</p>
+    <div class="p-4 md:p-0">
+      <h1 class="font-bold text-2xl md:text-7xl font-headings my-2 md:my-6">
+        {{ recipe.title }}
+      </h1>
+      <p class="md:text-xl w-full md:w-3/4 mb-4">{{ recipe.excerpt }}</p>
       <div class="bg-mint text-center py-2 px-4 inline-block">
         <span class="mr-1">{{ recipe.cookingtime }}</span>
         |
         <span class="ml-1"> {{ recipe.complexity }}</span>
       </div>
-      <section class="flex mt-10">
-        <div v-if="recipe.ingredients" class="w-1/2 pr-8 font-primary">
+      <section class="mt-8 md:mt-10 md:flex">
+        <div v-if="recipe.ingredients" class="md:w-1/2 md:pr-8 font-primary">
           <h2 class="text-lg font-bold pb-4">Ingredienser</h2>
           <BlockContent :blocks="recipe.ingredients" />
         </div>
-        <div class="">
+        <div class="mt-8 md:mt-0">
           <h2 class="text-lg font-bold">Instruktioner</h2>
           <ul class="mt-4">
             <li
@@ -66,7 +68,7 @@ const toggleCheck = (index: number) => {
         </div>
       </section>
       <section>
-        <ul class="flex">
+        <ul class="flex mt-8">
           <li
             v-for="category in recipe.categories"
             class="rounded-xl py-2 px-4 bg-mint mr-2"
