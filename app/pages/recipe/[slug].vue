@@ -15,6 +15,12 @@ const query = groq`*[ _type == "recipe" && slug.current == $slug][0]`;
 const { data: recipe } = await useSanityQuery<Recipe>(query, {
   slug: route.params.slug,
 });
+
+const checks: Ref<boolean[]> = ref([]);
+
+const toggleCheck = (index: number) => {
+  checks.value[index] = !checks.value[index];
+};
 </script>
 <template>
   <section>
@@ -40,8 +46,21 @@ const { data: recipe } = await useSanityQuery<Recipe>(query, {
         <div class="">
           <h2 class="text-lg font-bold">Instruktioner</h2>
           <ul class="mt-4">
-            <li v-for="instruction in recipe.instructions">
-              <p class="pb-2 text-lg">{{ instruction }}</p>
+            <li
+              v-for="(instruction, index) in recipe.instructions"
+              :key="index"
+              class="bg-slate-100 p-2 mb-2"
+            >
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  class="mr-4"
+                  @click="toggleCheck(index)"
+                />
+                <p class="text-lg" :class="{ 'line-through': checks[index] }">
+                  {{ instruction }}
+                </p>
+              </label>
             </li>
           </ul>
         </div>
