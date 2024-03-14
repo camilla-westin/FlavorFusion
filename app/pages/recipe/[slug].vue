@@ -73,7 +73,7 @@ const toggleCheck = (index: number) => {
             v-for="category in recipe.categories"
             class="rounded-xl py-2 px-4 bg-mint mr-2"
           >
-            {{ category }}
+            <a :href="`/category/${category}`">{{ category }}</a>
           </li>
         </ul>
       </section>
