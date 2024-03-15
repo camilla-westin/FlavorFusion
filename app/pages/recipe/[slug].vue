@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { type Recipe } from "~/types/Recipe";
 import BlockContent from "~/components/BlockContent.vue";
+import CategoryList from "~/components/CategoryList.vue";
 
 defineProps({
   recipe: {
@@ -68,14 +69,7 @@ const toggleCheck = (index: number) => {
         </div>
       </section>
       <section>
-        <ul class="flex mt-8">
-          <li
-            v-for="category in recipe.categories"
-            class="rounded-xl py-2 px-4 bg-mint mr-2"
-          >
-            <a :href="`/category/${category}`">{{ category }}</a>
-          </li>
-        </ul>
+        <CategoryList :categories="recipe.categories" />
       </section>
     </div>
   </section>
