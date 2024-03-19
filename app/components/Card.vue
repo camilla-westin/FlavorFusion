@@ -11,10 +11,7 @@ export default {
 </script>
 
 <template>
-  <div
-    v-if="post"
-    class="card"
-  >
+  <div v-if="post" class="card my-8">
     <img
       v-if="post.mainImage"
       class="card__cover"
@@ -22,17 +19,11 @@ export default {
       alt="Cover image"
     />
 
-    <div
-      v-else
-      class="card__cover--none"
-    />
+    <div v-else class="card__cover--none" />
 
     <div class="card__container">
       <h3 class="card__title">
-        <a
-          class="card__link"
-          :href="`/post/${post.slug.current}`"
-        >
+        <a class="card__link" :href="`/post/${post.slug.current}`">
           {{ post.title }}
         </a>
       </h3>
@@ -49,7 +40,6 @@ export default {
   padding: var(--space-2);
   padding: 9px;
   position: relative;
-  border-bottom: 1px solid #ced2d9;
 
   & .card__container {
     margin: 0 var(--space-1) 0;
@@ -120,9 +110,6 @@ export default {
 
 @media (min-width: 575px) {
   .card {
-    border: 1px solid #ced2d9;
-    border-bottom: none;
-
     & .card__title {
       margin-top: var(--space-4);
     }

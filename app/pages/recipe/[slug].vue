@@ -24,7 +24,7 @@ const toggleCheck = (index: number) => {
 };
 </script>
 <template>
-  <section>
+  <section class="pt-8">
     <img
       v-if="recipe.mainImage"
       class="cover w-full lg:w-2/3 h-96 object-cover"

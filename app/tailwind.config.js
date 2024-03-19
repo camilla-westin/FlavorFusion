@@ -16,8 +16,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "hero-background":
+          "url('/assets/img/brooke-lark-HlNcigvUi4Q-unsplash.jpg')",
+      },
+      height: {
+        "hero-height": "400px",
+      },
       backgroundColor: {
-        mint: "#F5FAF4",
+        mint: "#e3efe1",
       },
       fontFamily: {
         primary: ["PT Serif", "serif"],
