@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   modules: [
     "@nuxtjs/sanity",
+    "@pinia/nuxt",
     [
       "@nuxtjs/google-fonts",
       {
