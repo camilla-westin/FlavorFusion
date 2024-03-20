@@ -16,10 +16,15 @@ let searchInput = computed(() => searchStore.searchTerm);
 
 const filteredRecipes = computed(() => {
   if (searchInput.value) {
+    const lowerCaseSearchInput = searchInput.value.toLowerCase();
     return recipes.value.filter((recipe) => {
-      return recipe.title
+      const titleMatch = recipe.title
         .toLowerCase()
-        .includes(searchInput.value.toLowerCase());
+        .includes(lowerCaseSearchInput);
+      const categoryMatch = recipe.categories.some((category) =>
+        category.toLowerCase().includes(lowerCaseSearchInput)
+      );
+      return titleMatch || categoryMatch;
     });
   }
   return recipes.value;
