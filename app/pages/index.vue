@@ -42,7 +42,9 @@ const filteredRecipes = computed(() => {
     />
     <Welcome v-if="posts?.length === 0" />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 px-4 md:px-8"
+    >
       <RecipeCard
         v-if="recipes"
         v-for="recipe in filteredRecipes"
