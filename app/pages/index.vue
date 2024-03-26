@@ -37,6 +37,7 @@ const filteredRecipes = computed(() => {
       v-if="posts && !searchInput"
       v-for="post in posts"
       :key="post._id"
+      :postid="post._id"
       :post="post"
     />
     <Welcome v-if="posts?.length === 0" />

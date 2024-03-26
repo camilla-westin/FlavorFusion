@@ -6,6 +6,18 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'recipe',
+      type: 'object',
+      fields: [
+        {
+          name: 'recipe',
+          title: 'Recipe',
+          type: 'reference',
+          to: [{type: 'recipe'}],
+        },
+      ],
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
@@ -40,15 +52,4 @@ export default defineType({
       type: 'blockContent',
     }),
   ],
-  preview: {
-    select: {
-      title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
-    },
-  },
 })

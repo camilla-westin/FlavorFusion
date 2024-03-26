@@ -8,7 +8,6 @@ export const useSearchStore = defineStore({
   actions: {
     doSearch(searchTerm) {
       this.searchTerm = searchTerm;
-      // console.log("test " + searchTerm);
     },
   },
 });

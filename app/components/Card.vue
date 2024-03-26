@@ -1,139 +1,55 @@
-<script>
+<script setup>
 import { formatDate } from "~/utils";
-export default {
-  props: {
-    post: {
-      type: Object,
-      required: true,
-    },
+
+const props = defineProps({
+  post: {
+    type: Object,
+    required: true,
   },
-};
+  postid: {
+    type: String,
+    required: true,
+  },
+});
+
+const postQuery = groq`*[_type == "post"]{
+  _id,
+        "recipe": recipe.recipe->{
+        title,
+        mainImage
+      }
+}`;
+const { data: postData } = await useSanityQuery(postQuery);
+
+const filteredPostData = postData.value.filter((post) => {
+  return post._id === props.postid;
+});
 </script>
 
 <template>
-  <div v-if="post" class="card my-8">
+  <div v-if="post" class="card my-8 flex">
     <img
-      v-if="post.mainImage"
+      v-if="filteredPostData.length > 0"
       class="card__cover"
-      :src="$urlFor(post.mainImage).width(500).height(300).url()"
+      :src="
+        $urlFor(filteredPostData[0].recipe.mainImage)
+          .width(500)
+          .height(300)
+          .url()
+      "
       alt="Cover image"
     />
 
-    <div v-else class="card__cover--none" />
-
-    <div class="card__container">
-      <h3 class="card__title">
-        <a class="card__link" :href="`/post/${post.slug.current}`">
-          {{ post.title }}
-        </a>
-      </h3>
-      <p class="card__excerpt">{{ post.excerpt }}</p>
-      <p class="card__date">{{ formatDate(post._createdAt) }}</p>
+    <div class="card__container px-4">
+      <div class="flex flex-col justify-between">
+        <h2 class="text-2xl">
+          <a :href="`/post/${post.slug.current}`">
+            {{ post.title }}
+          </a>
+        </h2>
+        <p class="text-xl mt-4">{{ post.excerpt }}</p>
+      </div>
+      <p>{{ formatDate(post._createdAt) }}</p>
     </div>
   </div>
 </template>
-
-<style scoped>
-.card {
-  display: flex;
-  flex-direction: column;
-  padding: var(--space-2);
-  padding: 9px;
-  position: relative;
-
-  & .card__container {
-    margin: 0 var(--space-1) 0;
-  }
-
-  & .card__cover {
-    width: 100%;
-    height: 231px;
-    object-fit: cover;
-  }
-
-  & .card__cover--none {
-    width: 100%;
-    height: 231px;
-    background: var(--black);
-  }
-
-  & .card__title {
-    font-family: var(--font-family-sans);
-    font-weight: 800;
-    font-size: var(--font-size-7);
-    line-height: var(--line-height-6);
-    letter-spacing: -0.025em;
-    margin: var(--space-3) 0;
-  }
-
-  & .card__excerpt {
-    font-family: var(--font-family-serif);
-    font-weight: 400;
-    font-size: var(--font-size-4);
-    line-height: var(--line-height-3);
-    margin-top: 0;
-  }
-
-  & .card__date {
-    font-weight: 600;
-    font-family: var(--font-family-sans);
-    font-size: var(--font-size-1);
-    margin-top: calc(var(----space-4) + 7);
-  }
-
-  & .card__link {
-    color: var(--black);
-    text-decoration: none;
-
-    &:hover {
-      opacity: 0.8;
-      transition: 0.2s;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-    }
-  }
-
-  &:first-child {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-  }
-
-  &:last-child {
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-  }
-}
-
-@media (min-width: 575px) {
-  .card {
-    & .card__title {
-      margin-top: var(--space-4);
-    }
-
-    &:last-child {
-      border-bottom: 1px solid #ced2d9;
-    }
-  }
-}
-
-@media (min-width: 800px) {
-  .card {
-    flex-direction: row;
-
-    & .card__container {
-      margin: 0 var(--space-4) 0;
-    }
-
-    & .card__cover,
-    & .card__cover--none {
-      min-width: 366.5px;
-      max-width: 366.5px;
-      max-height: 231px;
-    }
-  }
-}
-</style>
