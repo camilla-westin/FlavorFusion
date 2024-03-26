@@ -15,7 +15,8 @@ const props = defineProps({
 const postQuery = groq`*[_type == "post"]{
   _id,
         "recipe": recipe.recipe->{
-        mainImage
+        mainImage,
+        imageAlt
       }
 }`;
 const { data: postData } = await useSanityQuery(postQuery);
@@ -32,7 +33,7 @@ const postRecipeRef = postData.value.filter((post) => {
       <img
         v-if="post.mainImage"
         :src="$urlFor(post.mainImage).width(550).height(350).url()"
-        alt="Cover image"
+        :alt="post.imageAlt"
       />
       <img
         v-else
@@ -42,7 +43,7 @@ const postRecipeRef = postData.value.filter((post) => {
             .height(350)
             .url()
         "
-        alt="Cover image"
+        :alt="postRecipeRef[0].recipe.imageAlt"
       />
     </div>
 

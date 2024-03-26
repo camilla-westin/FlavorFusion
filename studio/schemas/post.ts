@@ -47,6 +47,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'imageAlt',
+      title: 'Image alt text',
+      type: 'string',
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',

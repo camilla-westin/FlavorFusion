@@ -29,7 +29,7 @@ const toggleCheck = (index: number) => {
       v-if="recipe.mainImage"
       class="cover w-full lg:w-2/3 h-96 object-cover"
       :src="$urlFor(recipe.mainImage).width(1920).url()"
-      alt="Cover image"
+      :alt="recipe.imageAlt"
     />
     <div class="p-4 md:p-0">
       <h1 class="font-bold text-2xl md:text-7xl font-headings my-2 md:my-6">

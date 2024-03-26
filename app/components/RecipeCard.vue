@@ -19,7 +19,7 @@ defineProps({
         v-if="recipe.mainImage"
         class="cover"
         :src="$urlFor(recipe.mainImage).width(500).height(300).url()"
-        alt="Cover image"
+        :alt="recipe.imageAlt"
       />
 
       <div v-else class="card__cover--none" />

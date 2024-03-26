@@ -8,5 +8,6 @@ export interface Post {
   slug: Slug;
   excerpt?: string;
   mainImage?: ImageAsset;
+  imageAlt?: string;
   body: PortableTextBlock[];
 }
