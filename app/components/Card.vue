@@ -31,15 +31,15 @@ const postRecipeRef = postData.value.filter((post) => {
     <div class="sm:w-1/2">
       <img
         v-if="post.mainImage"
-        :src="$urlFor(post.mainImage).width(500).height(300).url()"
+        :src="$urlFor(post.mainImage).width(550).height(350).url()"
         alt="Cover image"
       />
       <img
         v-else
         :src="
           $urlFor(postRecipeRef[0].recipe.mainImage)
-            .width(500)
-            .height(300)
+            .width(550)
+            .height(350)
             .url()
         "
         alt="Cover image"
