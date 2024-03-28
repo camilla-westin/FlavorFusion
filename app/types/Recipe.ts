@@ -15,4 +15,5 @@ export interface Recipe {
   ingredients?: PortableTextBlock[];
   instructions?: string[];
   complexity?: "enkel" | "medel" | "avancerad";
+  chef?: Object;
 }

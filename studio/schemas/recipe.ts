@@ -66,6 +66,18 @@ export default defineType({
       title: 'Complexity',
       type: 'string',
     }),
+    defineField({
+      name: 'chef',
+      type: 'object',
+      fields: [
+        {
+          name: 'chef',
+          title: 'Chef',
+          type: 'reference',
+          to: [{type: 'chef'}],
+        },
+      ],
+    }),
   ],
   preview: {
     select: {

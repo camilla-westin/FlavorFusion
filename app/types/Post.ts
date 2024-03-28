@@ -10,4 +10,5 @@ export interface Post {
   mainImage?: ImageAsset;
   imageAlt?: string;
   body: PortableTextBlock[];
+  recipe?: Object;
 }

@@ -2,8 +2,9 @@
 import { type Recipe } from "~/types/Recipe";
 import BlockContent from "~/components/BlockContent.vue";
 import CategoryList from "~/components/CategoryList.vue";
+import ChefCard from "~/components/ChefCard.vue";
 
-defineProps({
+const props = defineProps({
   recipe: {
     type: Object,
     required: true,
@@ -12,7 +13,14 @@ defineProps({
 
 const route = useRoute();
 
-const query = groq`*[ _type == "recipe" && slug.current == $slug][0]`;
+const query = groq`*[ _type == "recipe" && slug.current == $slug][0]{
+  ...,
+  "chef": chef.chef->{
+    name, 
+    mainImage,
+    slug
+  }
+}`;
 const { data: recipe } = await useSanityQuery<Recipe>(query, {
   slug: route.params.slug,
 });
@@ -66,6 +74,11 @@ const toggleCheck = (index: number) => {
               </label>
             </li>
           </ul>
+        </div>
+        <div>
+          <div class="w-52 mt-3 p-8">
+            <ChefCard :key="recipe.chef._ref" :chef="recipe.chef" />
+          </div>
         </div>
       </section>
       <section>
