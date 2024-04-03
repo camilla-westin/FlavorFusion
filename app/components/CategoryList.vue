@@ -8,10 +8,11 @@ defineProps({
 </script>
 
 <template>
-  <ul class="flex mt-8">
+  <ul class="flex flex-wrap mt-8">
     <li
-      v-for="category in categories"
-      class="rounded-xl py-2 px-4 bg-mint mr-2"
+      v-for="(category, index) in categories"
+      :key="index"
+      class="rounded-full py-2 px-4 bg-lightpurpple mr-2 mb-2"
     >
       <a :href="`/category/${category}`">{{ category }}</a>
     </li>

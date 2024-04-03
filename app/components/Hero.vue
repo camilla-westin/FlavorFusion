@@ -1,5 +1,6 @@
 <script setup>
 import { useSearchStore } from "@/plugins/pinia/store/search";
+import CategoryModule from "./CategoryModule.vue";
 
 let searchTerm = "";
 
@@ -29,8 +30,8 @@ const handleSearch = (searchTerm) => {
         >
           Search
         </button>
+        <CategoryModule />
       </form>
-      {{ searchTerm }}
     </div>
   </section>
 </template>

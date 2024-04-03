@@ -26,6 +26,7 @@ module.exports = {
       backgroundColor: {
         mint: "#e3efe1",
         purpple: "#e38af7",
+        lightpurpple: "#e8ceef",
       },
       fontFamily: {
         primary: ["PT Serif", "serif"],
